@@ -13,7 +13,9 @@ WORKDIR /app
 COPY --from=build /app/bin/Release ./
 
 #install service using powershell or installutil.exe 
-RUN "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/installutil.exe" /LogToConsole=true /ShowCallStack C:/app/WindowsContainer.Wrapper.exe ;
+RUN "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/installutil.exe" \
+  /LogToConsole=true /ShowCallStack \
+  C:/app/WindowsContainer.Wrapper.exe ;
 
 #The container stays up as long as this process is running.
 ENTRYPOINT ["powershell"] 

@@ -5,8 +5,6 @@
 
 ## Docker
 
-* cd .\WindowsContainer.Wrapper\
-
 * docker image build --no-cache -t windowsservicewrapper:latest -f .\ServiceWrapper.dockerfile .
 
 * docker run windowsservicewrapper:latest

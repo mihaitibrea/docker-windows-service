@@ -24,10 +24,7 @@ namespace WindowsContainer.Wrapper
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(ConnectionStringName))
-                {
-                    return Util.GetConnectionString(ConnectionStringName);
-                }
+               
                 if (String.IsNullOrEmpty(_connectionString))
                     throw new ApplicationException("Connection string not specified");
                 return _connectionString;
