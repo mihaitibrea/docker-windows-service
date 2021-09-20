@@ -5,6 +5,7 @@ using System.IO;
 using System.ServiceProcess;
 using System.Timers;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace WindowsContainer.Wrapper
 {
@@ -54,6 +55,8 @@ namespace WindowsContainer.Wrapper
             {
                 _timer.Enabled = false;
                 var message = $"Doing stuff at {DateTime.Now.ToLongTimeString()}";
+
+                File.WriteAllText(@"C:\app\DoingStuff.txt", message, Encoding.UTF8);
 
                 _logger.Info(message);
          

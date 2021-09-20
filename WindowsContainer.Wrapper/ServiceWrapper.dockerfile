@@ -3,14 +3,15 @@ WORKDIR /app
 
 # copy everything and build app
 COPY . .
-RUN msbuild WindowsContainer.Wrapper.csproj -t:restore -p:Configuration=Release
+RUN msbuild WindowsContainer.Wrapper.csproj -t:restore 
+RUN msbuild WindowsContainer.Wrapper.csproj -p:Configuration=Release
 
 FROM mcr.microsoft.com/dotnet/framework/runtime:4.8
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 
 WORKDIR /app
-COPY --from=build /app/bin/Release ./
+COPY --from=build /app/bin/Release/ ./
 
 #install service using powershell or installutil.exe 
 RUN "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/installutil.exe" \
